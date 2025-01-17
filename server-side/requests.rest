@@ -1,0 +1,48 @@
+### GET REQUEST
+
+GET  http://localhost:8000/api/todos HTTP/1.1
+
+### POST REQUEST
+
+POST http://localhost:8000/api/todos
+Content-Type: application/json
+
+{
+    "title":"Create Figma Design",
+    "description": "I want to create basic layout and UI in figma for better understanding"
+}
+
+### PATCH REQUEST WITH SINGLE TODO
+
+PATCH http://localhost:8000/api/todos/678aba63930672dc0641e8a7 HTTP/1.1
+Content-Type: application/json
+
+{
+    "completed": false
+}
+
+### PATCH REQUEST WITH BULK COMPLETE
+
+PATCH http://localhost:8000/api/todos-bulkcompleted
+Content-Type: application/json
+
+{
+    "ids": [
+        "678ab542163929d58d684ab8",
+        "678aba63930672dc0641e8a7",
+        "678aba8e930672dc0641e8aa"
+    ]
+}
+
+
+### DELETE REQUEST WITH SINGLE TODO ID
+DELETE http://localhost:8000/api/todos/678aba8e930672dc0641e8aa
+Content-Type: application/json
+
+### DELETE REQUEST WITH BULK DELETE
+DELETE http://localhost:8000/api/todos-deleteAll
+Content-Type: application/json
+
+{
+    "ids":["678ac25c6ff0d1c336833b3e"]
+}
