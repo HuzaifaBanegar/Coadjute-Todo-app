@@ -109,7 +109,7 @@ const deleteTodo = async (req, res) => {
 
     if (!deletedTodo) {
       return res.status(404).send({ message: "Todo not found" });
-    }
+    } 
 
     res.send({ message: "Todo deleted successfully", deletedTodo });
   } catch (error) {
