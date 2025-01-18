@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TrueDo",
+  title: "TrueDo by coadjute",
   description: "TrueDo is a todo app to improve your daily productivity",
 };
 

@@ -2,20 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities{
+  .h1-nav{
+    @apply text-[36px] font-bold
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  .flex-center{
+    @apply flex justify-center items-center
+  }
+
+  .flex-between{
+    @apply flex justify-between items-center
+  }
+
+
+
 }
