@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "@/components/navbar";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -15,7 +16,7 @@ const montserrat = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "TrueDo by coadjute",
+  title: "TrueDo by Coadjute",
   description: "TrueDo is a todo app to improve your daily productivity",
 };
 
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${montserrat.variable} antialiased`}
       >
+        <Navbar/>
         {children}
       </body>
     </html>
