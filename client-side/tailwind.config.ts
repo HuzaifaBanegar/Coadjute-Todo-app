@@ -24,13 +24,15 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		screens: {
-  			xs: '420px'
+  			xs: '420px',
+  			sm: '750px',
+  			lg: '1300px'
   		},
   		boxShadow: {
   			'light-100': '0px 12px 20px 0px rgba(184, 184, 184, 0.03), 0px 6px 12px 0px rgba(184, 184, 184, 0.02), 0px 2px 4px 0px rgba(184, 184, 184, 0.03)'
   		},
   		fontSize: {
-  			'desktoplarge': '30px',
+  			desktoplarge: '30px',
   			'destop-medium': '24px',
   			'desktop-small': '16px',
   			'mobile-large': '20px',
@@ -46,8 +48,30 @@ export default {
   			]
   		},
   		padding: {
-  			'small': '8px',
-  			'large': '20px'
+  			small: '8px',
+  			large: '20px'
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
   		}
   	}
   },

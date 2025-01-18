@@ -4,12 +4,12 @@
 
 body{
   font-family: "Inter", sans-serif;
-  background-color: "bg-primary-200";
+  background-color: #E0F3FC;
 }
 
 @layer utilities{
   .h1-nav{
-    @apply sm:text-[36px] font-bold text-[24px]
+    @apply sm:text-[36px] font-bold text-[20px]
   }
 
   .flex-center{
@@ -17,12 +17,9 @@ body{
   }
 
   .flex-between{
-    @apply flex justify-between items-center
+    @apply flex justify-between
   }
 
-  .flex-between-small{
-
-  }
 
   .centered-card{
     @apply flex flex-col gap-[14px] items-center justify-center text-center
