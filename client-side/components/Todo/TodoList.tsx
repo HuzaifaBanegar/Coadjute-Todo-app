@@ -1,13 +1,17 @@
 import React from 'react'
 import { TodoArray } from '@/lib/interfaces'
+import { Accordion } from '../ui/accordion'
+import TodoItem from './TodoItem'
 const TodoList : React.FC<TodoArray> =({todos}) => {
   return (
     <div>
-      {
-        todos.map((todo)=>(
-            <li key={todo._id}>{todo.title}</li>
-        ))
-      }
+        <Accordion type="single" collapsible className="w-full">
+        {
+            todos.map((todo)=>(
+                <TodoItem key={todo._id} item={todo}/>
+            ))
+        }
+        </Accordion>
     </div>
   )
 }
