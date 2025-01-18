@@ -32,7 +32,7 @@ export default {
   			'light-100': '0px 12px 20px 0px rgba(184, 184, 184, 0.03), 0px 6px 12px 0px rgba(184, 184, 184, 0.02), 0px 2px 4px 0px rgba(184, 184, 184, 0.03)'
   		},
   		fontSize: {
-  			'desktop-large': '28px',
+  			'desktop-large': '26px',
   			'destop-medium': '24px',
   			'desktop-small': '16px',
   			'mobile-large': '20px',

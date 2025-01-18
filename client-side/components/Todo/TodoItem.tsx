@@ -34,7 +34,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ item }) => {
 
   return (
     <div
-      className={`p-small border rounded-1 mb-2 overflow-hidden transition-colors duration-200 ${
+      className={`p-small border rounded-1 mb-2 overflow-hidden transition-colors duration-200 w-[100%] ${
         isChecked
           ? "bg-primary-300"
           : item.completed
@@ -64,9 +64,9 @@ const TodoItem: React.FC<TodoItemProps> = ({ item }) => {
           />
           <label
             htmlFor={item._id}
-            className="sm:text-desktop-large text-mobile-large font-medium leading-none select-none"
+            className="sm:text-desktop-medium text-mobile-large font-medium leading-none select-none items-center"
           >
-            {item.title}
+            {item.title}+{" "}<button disabled className="text-mobile-small ml-1 p-1 text-primary-100 bg-primary-400">{item.completed? "COMPLETED": ""}</button>
           </label>
         </div>
         <svg
