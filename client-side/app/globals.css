@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  font-family: "Inter", sans-serif;
+}
+
 @layer utilities{
   .h1-nav{
     @apply text-[36px] font-bold
@@ -13,6 +17,10 @@
 
   .flex-between{
     @apply flex justify-between items-center
+  }
+
+  .centered-card{
+    @apply flex flex-col gap-[14px] items-center justify-center text-center
   }
 
 

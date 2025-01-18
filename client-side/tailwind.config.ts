@@ -33,6 +33,10 @@ export default {
         "mobile-large" : "20px",
         "mobile-medium" : "16px",
         "mobile-small" : "12px"
+      },
+      fontFamily:{
+        inter:['var(--font-inter)'],
+        montserrat:['var(--font-montserrat)']
       }
     },
   },
