@@ -2,16 +2,27 @@ import React from 'react'
 import { TodoArray } from '@/lib/interfaces'
 import { Accordion } from '../ui/accordion'
 import TodoItem from './TodoItem'
-const TodoList : React.FC<TodoArray> =({todos}) => {
+interface TodoListProps extends TodoArray {
+    selectedIds: string[]
+    setSelectedIds: React.Dispatch<React.SetStateAction<string[]>>
+  }
+const TodoList : React.FC<TodoListProps> =({todos, selectedIds, setSelectedIds }) => {
   return (
     <div>
-        <div>
-
-        </div>
+        
         <Accordion type="single" collapsible className="w-full">
         {
             todos.map((todo)=>(
-                <TodoItem key={todo._id} item={todo}/>
+                <TodoItem key={todo._id} 
+                    item={todo}
+                    isSelected={selectedIds.includes(todo._id)}
+                    onSelect={(checked) => {
+                    setSelectedIds(prev => 
+                        checked 
+                        ? [...prev, todo._id]
+                        : prev.filter(id => id !== todo._id)
+                    )
+                    }}/>
             ))
         }
         </Accordion>

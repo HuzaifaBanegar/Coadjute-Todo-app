@@ -14,11 +14,11 @@ Content-Type: application/json
 
 ### PATCH REQUEST WITH SINGLE TODO
 
-PATCH http://localhost:8000/api/todos/678ac32e0e19f47b0ef2fd1d HTTP/1.1
+PATCH http://localhost:8000/api/todos/678aba63930672dc0641e8a7 HTTP/1.1
 Content-Type: application/json
 
 {
-    "completed": true
+    "completed": false
 }
 
 ### PATCH REQUEST WITH BULK COMPLETE
@@ -28,9 +28,7 @@ Content-Type: application/json
 
 {
     "ids": [
-        "678ab542163929d58d684ab8",
-        "678aba63930672dc0641e8a7",
-        "678aba8e930672dc0641e8aa"
+       "678aba63930672dc0641e8a7"
     ]
 }
 

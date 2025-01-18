@@ -8,91 +8,97 @@ import { TodoInterface } from "@/lib/interfaces";
 import { Checkbox } from "../ui/checkbox";
 
 interface TodoItemProps {
-  item: TodoInterface;
-}
-
-const TodoItem: React.FC<TodoItemProps> = ({ item }) => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false); // Prevent hydration mismatch
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleCheckboxChange = (checked: boolean | "indeterminate") => {
-    setIsChecked(checked as boolean);
-  };
-
-  const handleAccordionClick = () => {
-    setIsOpen(!isOpen);
-  };
-
-  if (!mounted) {
-    return null;
+    item: TodoInterface
+    isSelected: boolean
+    onSelect: (checked: boolean) => void
   }
 
-  return (
-    <div
-      className={`p-small border rounded-1 mb-2 overflow-hidden transition-colors duration-200 w-[100%] ${
-        isChecked
-          ? "bg-primary-300"
-          : item.completed
-          ? "bg-primary-100"
-          : "bg-primary-400"
-      } ${
-        isChecked
-          ? item.completed
-            ? "text-primary-200 line-through"
-            : "text-primary-200"
-          : item.completed
-          ? "text-primary-400 line-through"
-          : "text-primary-300"
-      }`}
-    >
+const TodoItem: React.FC<TodoItemProps> = ({ item, isSelected, onSelect }) => {
+    const [isOpen, setIsOpen] = useState(false)
+    const [mounted, setMounted] = useState(false)
+  
+    useEffect(() => {
+      setMounted(true)
+    }, [])
+  
+    const handleCheckboxChange = (checked: boolean | "indeterminate") => {
+      onSelect(checked as boolean)
+    }
+  
+    const handleAccordionClick = () => {
+      setIsOpen(!isOpen)
+    }
+  
+    if (!mounted) {
+      return null
+    }
+  
+    return (
       <div
-        onClick={handleAccordionClick}
-        className="p-4 cursor-pointer flex items-center justify-between"
+        className={`p-small border rounded-1 mb-2 overflow-hidden transition-colors duration-200 w-[100%] ${
+          isSelected
+            ? "bg-primary-300"
+            : item.completed
+            ? "bg-primary-100"
+            : "bg-primary-400"
+        } ${
+          isSelected
+            ? item.completed
+              ? "text-primary-200 line-through"
+              : "text-primary-200"
+            : item.completed
+            ? "text-primary-400 line-through"
+            : "text-primary-300"
+        }`}
       >
-        <div className="flex items-center space-x-2">
-          {/* Stop propagation when checkbox is clicked */}
-          <Checkbox
-            id={item._id}
-            checked={isChecked}
-            onCheckedChange={handleCheckboxChange}
-            onClick={(e) => e.stopPropagation()} // Prevent event bubbling
-          />
-          <label
-            htmlFor={item._id}
-            className="sm:text-desktop-medium text-mobile-large font-medium leading-none select-none items-center"
-          >
-            {item.title}+{" "}<button disabled className="text-mobile-small ml-1 p-1 text-primary-100 bg-primary-400">{item.completed? "COMPLETED": ""}</button>
-          </label>
-        </div>
-        <svg
-          className={`w-4 h-4 transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+        <div
+          onClick={handleAccordionClick}
+          className="p-4 cursor-pointer flex items-center justify-between"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id={item._id}
+              checked={isSelected}
+              onCheckedChange={handleCheckboxChange}
+              onClick={(e) => e.stopPropagation()}
+            />
+            <label
+              htmlFor={item._id}
+              className="sm:text-desktop-medium text-mobile-large font-medium leading-none select-none items-center"
+            >
+              {item.title}
+              <button
+                disabled
+                className="text-mobile-small ml-1 p-1 text-primary-100 bg-primary-400"
+              >
+                {item.completed ? "COMPLETED" : ""}
+              </button>
+            </label>
+          </div>
+          <svg
+            className={`w-4 h-4 transition-transform duration-200 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
+        <div
+          className={`transition-all duration-200 ${
+            isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+          } overflow-hidden`}
+        >
+          <div className="p-4 border-t text-justify">{item.description}</div>
+        </div>
       </div>
-      <div
-        className={`transition-all duration-200 ${
-          isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-        } overflow-hidden`}
-      >
-        <div className="p-4 border-t text-justify">{item.description}</div>
-      </div>
-    </div>
   );
 };
 
