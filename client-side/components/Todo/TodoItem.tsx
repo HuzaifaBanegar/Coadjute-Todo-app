@@ -67,12 +67,12 @@ const TodoItem: React.FC<TodoItemProps> = ({ item, isSelected, onSelect }) => {
               className="sm:text-desktop-medium text-mobile-large font-medium leading-none select-none items-center"
             >
               {item.title}
-              <button
+              {item.completed ? <button
                 disabled
                 className="text-mobile-small ml-1 p-1 text-primary-100 bg-primary-400"
               >
-                {item.completed ? "COMPLETED" : ""}
-              </button>
+                 COMPLETED 
+              </button>: null}
             </label>
           </div>
           <svg
