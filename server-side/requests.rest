@@ -8,8 +8,8 @@ POST http://localhost:8000/api/todos
 Content-Type: application/json
 
 {
-    "title":"Create Figma Design",
-    "description": "I want to create basic layout and UI in figma for better understanding"
+    "title":"Make a documentation",
+    "description": "I want to create proper documentation about my project and cover all the aspect"
 }
 
 ### PATCH REQUEST WITH SINGLE TODO

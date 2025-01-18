@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 // GET API to get all the Todos
 const getTodos = async (req, res) => {
-  const todos = await Todo.find();
+  const todos = await Todo.find().sort({completed: 1});
   res.json(todos);
 };
 
