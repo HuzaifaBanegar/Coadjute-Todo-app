@@ -1,6 +1,6 @@
 // import Image from "next/image";
 
-import FloatingActionButton from "@/components/floating-button";
+import FloatingActionButton from "@/components/Floating-button";
 import Todo from "@/components/Todo/layout";
 
 export default function Home() {
