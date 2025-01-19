@@ -61,8 +61,8 @@ const Todo = () => {
     try {
       const idsToDelete = selectedOnly ? selectedIds : todos.map(todo => todo._id)
       await axios.post("/api/todo/bulkDelete", { ids: idsToDelete })
-      getTodos()
       setSelectedIds([])
+      window.location.reload();
     } catch (error) {
       console.error("Failed to delete todos:", error)
     }
@@ -72,8 +72,8 @@ const Todo = () => {
     try {
       const idsToComplete = selectedOnly ? selectedIds : todos.map(todo => todo._id)
       await axios.post("/api/todo/bulkComplete", { ids: idsToComplete })
-      getTodos()
       setSelectedIds([])
+      window.location.reload();
     } catch (error) {
       console.error("Failed to complete todos:", error)
     }
