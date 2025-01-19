@@ -20,11 +20,12 @@ import {
   DropdownMenuItem, 
   DropdownMenuTrigger 
 } from '../ui/dropdown-menu'
+import { usePersistedState } from '@/hooks/usePersistedData'
 
 const ITEMS_PER_PAGE = 5 // Adjust this number as needed
 
 const Todo = () => {
-  const [todos, setTodos] = useState<TodoInterface[]>([])
+  const [todos, setTodos] = usePersistedState<TodoInterface[]>('tasks', []);
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const [showAll, setShowAll] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
