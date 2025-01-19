@@ -25,6 +25,7 @@ import { usePersistedState } from '@/hooks/usePersistedData'
 const ITEMS_PER_PAGE = 5 // Adjust this number as needed
 
 const Todo = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const [todos, setTodos] = usePersistedState<TodoInterface[]>('tasks', []);
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const [showAll, setShowAll] = useState(true)
@@ -37,6 +38,8 @@ const Todo = () => {
     .filter(todo => 
       todo.title.toLowerCase().includes(searchTerm.toLowerCase())
     )
+
+  
 
   // Calculate pagination values
   const totalItems = filteredTodos.length
@@ -82,13 +85,19 @@ const Todo = () => {
   }
 
   useEffect(() => {
-    getTodos()
+    getTodos();
+    setIsMounted(true);
   }, [])
 
-  // Reset to first page when filters change
+ 
   useEffect(() => {
     setCurrentPage(1)
   }, [showAll, searchTerm])
+
+
+  if (!isMounted) {
+    return null; // or a loading spinner/skeleton
+  }
 
   return (
     <div className='centered-card sm:w-[30%] min-w-[400px] w-[100%] mx-auto p-small sm:min-w-[560px]'>
