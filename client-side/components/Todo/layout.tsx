@@ -21,6 +21,7 @@ import {
   DropdownMenuTrigger 
 } from '../ui/dropdown-menu'
 import { usePersistedState } from '@/hooks/usePersistedData'
+import NoTodo from './NoTodo'
 
 const ITEMS_PER_PAGE = 5 // Adjust this number as needed
 
@@ -33,11 +34,9 @@ const Todo = () => {
   const [searchTerm, setSearchTerm] = useState("")
 
   // Filter todos based on completion status and search term
-  const filteredTodos = todos
-    .filter(todo => showAll ? true : !todo.completed)
-    .filter(todo => 
-      todo.title.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+  const filteredTodos: TodoInterface[] = todos
+  .filter(todo => showAll ? true : !todo.completed).
+  filter(todo =>todo.title.toLowerCase().includes(searchTerm.toLowerCase()))
 
   
 
@@ -101,7 +100,9 @@ const Todo = () => {
 
   return (
     <div className='centered-card sm:w-[30%] min-w-[400px] w-[100%] mx-auto p-small sm:min-w-[560px]'>
-      <Input 
+     {todos.length ==0 ? 
+     <NoTodo/> : 
+     <><Input 
         type='text' 
         placeholder='🔍 Search Todo by Title'
         value={searchTerm}
@@ -143,6 +144,7 @@ const Todo = () => {
         selectedIds={selectedIds}
         setSelectedIds={setSelectedIds}
       />
+      </>}
 
       {totalPages > 1 && (
         <Pagination className="sm:mt-3 mt-2">

@@ -11,7 +11,7 @@ const TodoList : React.FC<TodoListProps> =({todos, selectedIds, setSelectedIds }
   return (
     <div>
         
-       {todos.length ==0 ? <NoTodo/> :
+       
        <Accordion type="single" collapsible className="sm:min-w-[560px] w-full min-w-[400px]">
         {
             todos.map((todo)=>(
@@ -27,7 +27,7 @@ const TodoList : React.FC<TodoListProps> =({todos, selectedIds, setSelectedIds }
                     }}/>
             ))
         }
-        </Accordion>}
+        </Accordion>
     </div>
   )
 }
