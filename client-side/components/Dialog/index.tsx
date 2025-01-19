@@ -43,10 +43,10 @@ const TodoDialog = ({ open, onClose, todo, onSubmit }: TodoDialogProps) => {
       setFormData({
         title: '',
         description: '',
-        completed: false
       });
     }
   }, [todo]);
+  
 
   const validateForm = () => {
     let isValid = true;
@@ -128,6 +128,7 @@ const TodoDialog = ({ open, onClose, todo, onSubmit }: TodoDialogProps) => {
               <p className="text-sm text-red-500 mt-1">{errors.description}</p>
             )}
           </div>
+          
           <div className="flex justify-end gap-2">
             <Button variant="outline" type="button" onClick={onClose}>
               Cancel
