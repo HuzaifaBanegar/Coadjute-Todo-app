@@ -25,6 +25,7 @@ const FloatingActionButton: React.FC = () => {
             ),
           })
         setIsOpen(false);
+        window.location.reload();
       }
     } catch (error) {
       console.error("Error adding todo:", error);

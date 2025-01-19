@@ -20,7 +20,18 @@ const TodoItem: React.FC<TodoItemProps> = ({ item, isSelected, onSelect }) => {
     const [mounted, setMounted] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const { toast } = useToast()
-
+    const handleDeleteTodo = async(id: string)=>{
+        try {
+            const idsToDelete = [];
+            idsToDelete.push(id);
+            const response = await axios.post("/api/todo/bulkDelete", { ids: idsToDelete })
+            if (response.status >= 200 && response.status < 300) {
+                window.location.reload();
+            }
+          } catch (error) {
+            console.error("Failed to delete todos:", error)
+          }
+    }
 
     const handleMarkCompleted = async (_id: string)=>{
         
@@ -45,6 +56,8 @@ const TodoItem: React.FC<TodoItemProps> = ({ item, isSelected, onSelect }) => {
         };
 
     }
+
+    
 
     const handleEditTodo = async (data: TodoInterface, method: string) => {
         try {
@@ -159,7 +172,9 @@ const TodoItem: React.FC<TodoItemProps> = ({ item, isSelected, onSelect }) => {
            
           </DropdownMenu>
           
-            <Trash size={20}/>
+            <Trash onClick={()=>{
+                handleDeleteTodo(item._id);
+            }} size={20}/>
             <ChevronDown size={20}/>
           </div>
         </div>
