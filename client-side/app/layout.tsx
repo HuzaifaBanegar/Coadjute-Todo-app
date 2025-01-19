@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${montserrat.variable} antialiased`}
       >
+        <Toaster/>
         <Navbar/>
         {children}
       </body>

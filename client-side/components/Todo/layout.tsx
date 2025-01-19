@@ -90,7 +90,7 @@ const Todo = () => {
   }, [showAll, searchTerm])
 
   return (
-    <div className='centered-card sm:w-[30%] min-w-[420px] w-full mx-auto p-small'>
+    <div className='centered-card sm:w-[30%] min-w-[400px] w-[100%] mx-auto p-small sm:min-w-[560px]'>
       <Input 
         type='text' 
         placeholder='🔍 Search Todo by Title'
@@ -99,7 +99,7 @@ const Todo = () => {
         className="mb-4"
       />
       
-      <div className='w-full flex justify-end gap-1 my-2'>
+      <div className='w-full flex justify-end gap-1 sm:my-2 my-1'>
         <Button onClick={() => setShowAll(!showAll)}>
           {showAll ? "Hide Completed" : "Show All"}
         </Button>
@@ -135,7 +135,7 @@ const Todo = () => {
       />
 
       {totalPages > 1 && (
-        <Pagination className="mt-4">
+        <Pagination className="sm:mt-3 mt-2">
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious 

@@ -10,7 +10,7 @@ const TodoList : React.FC<TodoListProps> =({todos, selectedIds, setSelectedIds }
   return (
     <div>
         
-        <Accordion type="single" collapsible className="sm:min-w-[560px] w-full min-w-[420px]">
+        <Accordion type="single" collapsible className="sm:min-w-[560px] w-full min-w-[400px]">
         {
             todos.map((todo)=>(
                 <TodoItem key={todo._id} 

@@ -35,7 +35,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ item, isSelected, onSelect }) => {
   
     return (
       <div
-        className={`p-small border rounded-1 mb-2 overflow-hidden transition-colors duration-200 w-[100%] ${
+        className={`p-small border rounded-1 mb-2 overflow-hidden transition-colors duration-200 w-full ${
           isSelected
             ? "bg-primary-300"
             : item.completed
@@ -53,7 +53,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ item, isSelected, onSelect }) => {
       >
         <div
           onClick={handleAccordionClick}
-          className="p-4 cursor-pointer flex items-center justify-between"
+          className="sm:p-4 p-2 cursor-pointer flex items-center justify-between"
         >
           <div className="flex items-center space-x-2">
             <Checkbox
@@ -64,7 +64,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ item, isSelected, onSelect }) => {
             />
             <label
               htmlFor={item._id}
-              className="sm:text-desktop-medium text-mobile-large font-medium leading-none select-none items-center"
+              className="sm:text-desktop-medium text-mobile-medium font-medium leading-none select-none items-center"
             >
               {item.title}
               {item.completed ? <button
