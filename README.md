@@ -3,7 +3,7 @@ Documentation: https://huzaifabanegar.atlassian.net/l/cp/6mk8RKhi <br/>
 
 How to get started?
 1. Clone the rep.
-2. Onepn two terminals
+2. Open two terminals
 3. On first, Move to client-side folder and type -> npm install (download all the dependecies)
 4. On second, Move to sever-side folder and type -> npm install (download all the dependecies)
 5. type npm run dev to run on both the server
